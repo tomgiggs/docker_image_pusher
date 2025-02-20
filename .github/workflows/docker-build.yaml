@@ -1,0 +1,29 @@
+name: Docker Build and Push to Alibaba Cloud
+
+on:
+  push:
+    branches:
+      - main  # 你可以根据需要更改分支名称
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to Alibaba Cloud ACR
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ secrets.ALIYUN_REGISTRY }}  # 阿里云容器镜像服务的 registry 地址
+          username: ${{ secrets.ALIYUN_REGISTRY_USER }}  # 阿里云账号的用户名
+          password: ${{ secrets.ALIYUN_REGISTRY_PASSWORD }}   # 阿里云账号的密码或访问令牌
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.ALIYUN_REGISTRY }}/${{ secrets.ALIYUN_NAME_SPACE }}/jupyter-torch:v2.3.1
