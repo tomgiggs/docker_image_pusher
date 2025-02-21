@@ -1,0 +1,31 @@
+name: Run Python Script
+
+on:
+  push:
+    branches:
+      - github-download/oss  # 你可以根据需要更改触发条件
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'  # 你可以根据需要更改 Python 版本
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # 如果有依赖项，可以在这里安装
+
+    - name: Run Python script
+      env:
+        OSS_AK: ${{ secrets.OSS_AK }}
+        OSS_SK: ${{ secrets.OSS_SK }}
+        OSS_BUCKET_NAME: ${{ secrets.OSS_BUCKET_NAME }}
+      run: python script.py
