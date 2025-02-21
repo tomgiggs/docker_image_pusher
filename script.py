@@ -26,7 +26,7 @@ bucket = oss2.Bucket(oss2.Auth(access_key_id, access_key_secret), endpoint, buck
 local_file_path = '/tmp/file.ext'  # 本地临时文件路径
 
 download_url = 'https://github.com/kvcache-ai/ktransformers/releases/download/v0.2.1.post1/ktransformers-0.2.1.post1+cu121torch24avx2-cp311-cp311-linux_x86_64.whl'
-object_name = ''/github/download/ktransformers-0.2.1.post1+cu121torch24avx2-cp311-cp311-linux_x86_64.whl''  # OSS中的对象名称
+object_name = '/github/download/ktransformers-0.2.1.post1+cu121torch24avx2-cp311-cp311-linux_x86_64.whl'  # OSS中的对象名称
 
 # 下载文件到本地
 response = requests.get(download_url)
