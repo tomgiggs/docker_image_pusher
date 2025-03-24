@@ -1,5 +1,6 @@
 ubuntu:24.04
 nginx:1.27.0
+docker.io/library/golang:1.19
 #nginx
 #支持私库
 # k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.0.0
