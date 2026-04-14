@@ -1,5 +1,7 @@
 ubuntu:24.04
 nginx:1.27.0
+mysql:8.0
+redis:7-alpine
 docker.io/library/golang:1.19
 docker.io/hiyouga/llamafactory:latest-npu-a2
 #nginx
